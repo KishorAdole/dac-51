@@ -1,0 +1,9 @@
+﻿1) Does ANSI recognize the data type DATE?
+
+--Yes
+
+
+2) Which subdivision of SQL is used to insert values in tables?
+
+--DML(data manipulation language) subdivision
+--To insert data into table we can use normal INSERT command.

@@ -1,0 +1,17 @@
+﻿1) Which field of the Customers table is the primary key?
+
+--Cnum
+
+2) What is the 4th column of the Customers table?
+
+--Ratings
+
+3) What is another word for row? For column?
+
+   Row   :- tupple , entity, opportunity
+Coloumn  :- attribute, method
+
+4) Why isn’t it possible to see the first five rows of a table?
+
+--when we UPDATE a row,if the row length is increasing,then the entire row may be moved to some other address in the harddisk.
+  later, when we SELECT from the table, the row will be at some other position.
