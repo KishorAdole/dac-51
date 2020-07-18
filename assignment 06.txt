@@ -1,0 +1,84 @@
+Assignment –6
+Using Special Operators in Conditions.
+
+
+1) Write two different queries that would produce all orders taken on October 3rd or 4th, 1990.
+
+A--SELECT * from orders where Odate='1990-10-03' OR Odate='1990-10-04';
+B--SELECT * from orders where Odate IN ('1990-10-04','1990-10-03');
+C--SELECT * from orders where Odate BETWEEN '1990-10-03' AND '1990-10-04';
+
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Snum | Cnum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 1007 | 2008 |
+| 3003 |  767.19 | 1990-10-03 | 1001 | 2001 |
+| 3002 | 1900.10 | 1990-10-03 | 1004 | 2007 |
+| 3005 | 5160.45 | 1990-10-03 | 1002 | 2003 |
+| 3006 | 1098.16 | 1990-10-03 | 1007 | 2008 |
+| 3009 | 1713.23 | 1990-10-04 | 1003 | 2002 |
+| 3007 |   75.75 | 1990-10-04 | 1002 | 2004 |
++------+---------+------------+------+------+
+
+
+2) Write a query that selects all of the customers serviced by Peel or Motika.
+(Hint: the snum field relates the two tables to one another).
+A--select * from customers where snum IN (1001,1004);
+
+B--select * from customers where snum IN (SELECT snum from salespeople WHERE sname='peel' OR sname='motika'); 
+
+
+--------+---------+--------+--------+------+
+| Cnum | Cname   | City   | Rating | Snum |
++------+---------+--------+--------+------+
+| 2001 | Hoffman | London |    100 | 1001 |
+| 2006 | Clemens | London |    100 | 1001 |
+| 2007 | Pereira | Rome   |    100 | 1004 |
+
+
+3) Write a query that will produce all the customers whose names begin with a letter from ‘A’ to ‘G’.
+--SELECT * from customers where cname between  '%A' and 'H%';
+
+
+ Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+
+4) Write a query that selects all customers whose names begin with the letter ‘C’.
+
+-- select * from customers where cname like 'c%';
+
+ Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+
+
+5) Write a query that selects all orders except those with zeroes or NULLs in the amt field.
+
+--SELECT * from orders where AMT!=0 or AMT!
+
+
+--SELECT * from orders where NOT (amt=0 and amt =NULL);
+
++------+---------+------------+------+------+
+| Onum | Amt     | Odate      | Snum | Cnum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1990-10-03 | 1007 | 2008 |
+| 3003 |  767.19 | 1990-10-03 | 1001 | 2001 |
+| 3002 | 1900.10 | 1990-10-03 | 1004 | 2007 |
+| 3005 | 5160.45 | 1990-10-03 | 1002 | 2003 |
+| 3006 | 1098.16 | 1990-10-03 | 1007 | 2008 |
+| 3009 | 1713.23 | 1990-10-04 | 1003 | 2002 |
+| 3007 |   75.75 | 1990-10-04 | 1002 | 2004 |
+| 3008 | 4723.00 | 1990-10-05 | 1001 | 2006 |
+| 3010 | 1309.95 | 1990-10-06 | 1002 | 2004 |
+| 3011 | 9891.88 | 1990-10-06 | 1001 | 2006 |
+
+
+
