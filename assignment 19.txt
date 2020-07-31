@@ -1,0 +1,29 @@
+
+Assignment – 19
+
+Views.
+
+
+
+1) Create a view that shows all of the customers who have the highest ratings.
+
+--create view v1
+ as select  * from  customers where rating > (select max(rating) from customers);
+
+2) Create a view that shows the number of salespeople in each city.
+--create view v2 as 
+  select count(snum) ,city from salespeople group by city;
+
+    
+
+
+3) Create a view that shows the average and total orders for each salesperson after his or her name. Assume all names are unique.
+
+--create view v3 as
+  select count(onum),avg(amt),sname from orders,salespeople where orders.snum=salespeople.snum;
+
+
+
+4) Create a view that shows each salesperson with multiple customers.
+--create view v4 as
+  select snum from customers group by snum having  count(cnum) > 1;
