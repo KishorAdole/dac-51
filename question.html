@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+          margin: 0px;
+          height: 100vh;background-image: url("dev.jpg");
+        }
+        
+      </style>
+</head>
+
+<body>
+   <form>
+    <div style=" display: flex;
+                 flex-direction: column;justify-content: center;align-items:center;
+                 height: 100vh;margin-bottom: 80px;" >
+
+        <div style="font-size: 50px;justify-content: center;align-content: center;align-items: center;font-style: bold;
+                        margin-bottom: 70px;font-weight: bold;">LOGIN FORM</div>
+
+        <label for ="first name" style="margin-left:500px;margin-right: 500px;font-size: 30px;"> Username</label>
+        <input type="text" name='First name' placeholder="Enter Username" required style="margin-left:500px;margin-right: 500px;" > 
+        <label for ="Last name" style="margin-left:500px;margin-right: 500px;font-size: 30px;"> Password</label>
+        <input type="text" name='Last name' placeholder="Enter Password" requried  style="margin-left:500px;margin-right: 500px;"> 
+        <button  style="background-color: bisque;
+                       font-family:initial;font-family:'Times New Roman', Times, serif, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-weight: 500px;padding: 5px;
+                       color: black;border-style:solid; outline-color: black;border-radius: 10px;
+                       font-size:30px;border: black;margin: 10px;
+                       background-attachment: fixed;"
+                       onclick="alert('Hello! your Password is wrong!!!!')"
+        >Login
+        </button>
+            <a href="https://mail.google.com" style="color: blue;border-radius: 10px;margin-top: 10px;">Forgrt Password?</a>
+
+        <div>
+             <input type="checkbox" name="remember me" style=" margin-top:50px;font-size: 20px;">Remember me</input>
+             <input type="checkbox" name="signed  in" style=" margin-top:50px;font-size: 20px;">Keep me signed in</input>
+        
+        </div>
+    
+    </div>
+    </div>
+
+
+</form>
+
+    
+</body>
+</html>

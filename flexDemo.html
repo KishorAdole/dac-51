@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Demo</title>
+    <style>
+        body,
+        html {
+            margin: 0px;
+            background: whitesmoke;
+            border: black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; 
+    flex-direction: column;
+    height: 100vh;">
+        <div style="flex: 1; 
+        background:cornflowerblue ;
+        padding: 5px;
+        display: flex; 
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 5px;">
+            A
+        </div>
+        <div style="flex: 8; background:blurywood ;display: flex; flex-direction: row; justify-content: space-between;">
+            <div style="flex:1; background: dimgrey;
+                padding: 5px;
+                display: flex; 
+                justify-content: center;
+                align-items: center;
+                margin-right:5px;">
+                L
+            </div>
+
+            <div style="flex:6; background: burlywood; padding: 5px; display: flex; 
+            justify-content: center;
+            align-items: center;
+            margin-right: 5px;;">C</div>
+
+            <div style="flex:1; background: dimgrey;padding: 5px; display: flex; 
+            justify-content: center;
+            align-items: center;">
+                R
+            </div>
+        </div>
+        <div style="flex: 1; background:cornflowerblue ; padding: 5px; display: flex; 
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;">
+            C
+        </div>
+    </div>
+</body>
+
+</html>
