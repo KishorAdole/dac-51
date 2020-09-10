@@ -133,9 +133,178 @@ Q1. Create directory of your name and then create 4 files inside it named
 			ls -lh
 
 A->vi a.txt vi b.txt vi c.txt vi d.txt
+B->chmod 600 a.txt b.txt
+C->chmod 400 c.txt
+D->chmod 100 d.sh 
+E->chmod 100 d.sh 
 
 
 
 
+------------------------------------------
+Q2. Change the permission of the previous directory to executable only.
+	Analyze the output.
+
+ans:	chmod 100 rahul
 
 
+
+Q3) Change the permission of the previous directory to read only.
+	Analyze the output.
+
+ans:	chmod 400 Rahul
+
+
+
+Q4) Use echo to list the all files of your home directory.
+
+ans:	echo *
+
+
+ 
+Q5) Use echo to list the all files of /etc/ directory
+
+ans: echo * /etc/
+
+	
+Q6) Use echo to list the all files of /etc/ directory with extension name .conf
+
+ans:
+
+ 
+ 
+Q7) Use echo to append your name to a.txt
+
+ans: echo Rahul > a.txt
+
+----------------------------------------------------------------------------------------------------------------------
+
+1) Create Three level nested directory a,b and c
+
+ans:	mkdir a
+	cd a
+	mkdir b
+	cd b
+	mkdir c
+
+
+
+A) Create at least one hidden file in each directory
+
+ans:	cd a
+ 	touch .a.txt
+	cd b
+	touch .b.txt
+	cd c
+	touch .c.txt
+
+
+B) Create at least one normal text file in each directory
+
+ans:	cd a
+	touch f1.txt
+	cd b
+	touch f2.txt
+	cd c
+	touch f3.txt
+
+
+
+C) Copy c into a
+
+ans:	cp -r a/b/c a
+
+
+
+D) Copy file inside a into b
+
+ans:	cp -r a/f1.txt a/b/c
+
+
+
+
+2) Change the third level directory c permission to read only
+
+ans:	chmod 444 c
+
+
+
+
+3) Try copying third level c directory to outside of a
+
+ans:	cp -r a/b/c a
+		output=> cp: cannot stat 'a/b/c/f3.txt': Permission denied
+			 cp: cannot stat 'a/b/c/.c.txt': Permission denied
+			 cp: cannot stat 'a/b/c/f1.txt': Permission denied
+	"PERMISSION DENIED!!"
+
+
+
+4) Create the directory  “data“ inside b
+
+ans:	mkdikr a/b/data
+
+
+
+5) Change the permission of b to read and write only
+
+ans:	chmod 666 a/b
+
+
+
+6) Create directory “data2”  inside b
+
+ans:	mkdir a/b/data2
+
+	=> "PERMISSION DENIED as we have chaged its permission to READ only".
+
+
+
+7) Create data.txt file inside b
+
+ans:	touch a/b/data.txt
+
+	=> "PERMISSION DENIED as we have chaged its permission to READ only".
+
+
+
+8) Rename the second level directory c to copied_dir
+
+ans:	cd a
+	mv c copied_dir
+
+
+
+9) Change permission of copied_dir to only executable
+
+ans:	chmod 111 a/copied_dir
+	
+
+
+10) Try ls on copied_dir
+
+ans:	ls a/copied_dir
+	
+	=> "PERMISSION DENIED as we have chaged its permission to EXECUTABLE only".
+	
+
+
+11) Try moving copied_dir to outside of a
+
+ans:	mv /home/rahul/a/copied_dir /home/rahul
+
+ 
+
+12) Try moving data directory outside of a
+
+ans:	mv /home/rahul/a/b/data /home/rahul
+
+	=> "PERMISSION DENIED"
+
+
+
+13) Now change the owner of the directory a to root
+
+ans:	sudo chown root a
+
+	password: (Enter root user password)
