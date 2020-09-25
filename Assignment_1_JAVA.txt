@@ -1,0 +1,902 @@
+			ASSIGNMENT - 1
+			(Core JAVA)
+			
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+01.	Write a program to print Hello World. Compile and run it using command prompt
+ans:
+
+	class Hello
+		{
+			public static void main(String[] args)
+				{
+					System.out.println("Hello World");
+				}
+		}
+
+
+
+02.	Write a program to declare a variable named rollNo of integer type. 
+	Assign it a value (let say 100) to it and print the following statement roll no = 100
+ans:
+	
+	class RollNo
+	{
+		public static void main(String[] args)
+		{
+			int rollNo=100;
+			System.out.println("roll no = "+rollNo);		
+		}
+	}
+	
+	
+
+03.	Find the result of following expressions. 
+	You need to determine the primitive data type of the variable by looking carefully the given expression and initialize variables by any random value.
+	A. y = x2 + 3x - 7 (print value of y)	 
+	B. y = x++ + ++x (print value of x and y) 
+	C. z = x++ - --y - --x  +  x++ (print value of x ,y and z)
+	D. z = x && y || !(x || y)  (print value of z) [ x, y, z are boolean variables ] 
+ans:
+
+	class Arithmetics
+	{
+		public static void main(String[] args)
+		{
+			int x=2;
+			int y=4;
+			int z=5;
+			
+			y=x^2+3*x-7;
+			System.out.println(y);
+			
+			y= x++ + ++x;
+			System.out.println(x);
+			System.out.println(y);
+			
+			z= x++ - --y - --x + x++;
+			System.out.println(x);
+			System.out.println(y);
+			System.out.println(z);
+			
+			boolean a=true;
+			boolean b=false;
+			boolean c=a&&b||!(a||b);
+			System.out.println(c);
+		}
+	}
+	
+	
+	
+04.	Write a program that initializes 2 byte type of variables. 
+	Add the values of these variables and store in a byte type of variable. 
+	[Note: primitive down casting is required in this program ] .
+ans:
+
+	class ByteAdd
+	{
+		public static void main(String[] args)
+		{
+			byte a=10;
+			byte b=20;
+			byte c=(byte)(a+b);	//addition stored in int to avoid lossy conversion
+			System.out.println(c);
+		}
+	}	
+	
+	
+	
+05.	Write a program that takes user’s name as command line argument and prints Welcome <entered user name>. 
+ans:
+
+	import java.util.Scanner;
+	class Welcome
+	{
+		public static void main(String[] args)
+		{
+			System.out.println("Enter your name: ");
+			Scanner scan=new Scanner(System.in);
+			String name=scan.next();
+			System.out.println("Welcome "+name);
+		}
+	}
+	
+	
+	
+06.	Write a program that takes radius of a circle as input.
+	Read the entered radius using Scanner class. 
+	Then calculate and print the area and circumference of the circle
+ans:
+
+	import java.util.Scanner;
+	class Circle
+	{
+		public static void main(String[] args)
+		{
+			System.out.println("Enter radius: ");
+			Scanner sc = new Scanner(System.in);
+			float r=sc.nextInt();
+			System.out.println("Area: "+(3.14*r*r));
+			System.out.println("Circumference: "+(2f*3.14*r));
+		}
+	}
+	
+	
+	
+07.	Write a program to calculate sum of 5 subject’s marks & find percentage. 
+	Take the obtained marks from user using Scanner class. 
+	Output should be in this format [ percentage marks = 99 % ]. Use concatenation operator here.
+ans:
+
+	import java.util.Scanner;
+	class Percentage
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter marks of five subjects: ");
+			float m1= scan.nextFloat();
+			float m2= scan.nextFloat();
+			float m3= scan.nextFloat();
+			float m4= scan.nextFloat();
+			float m5= scan.nextFloat();
+			float per=(m1+m2+m3+m4+m5)/5;
+			System.out.println(per"%");
+		}
+	}
+	
+	
+	
+08.	Write a program to find the simple interest. Take the principle amount, rate of interest and time from user using Scanner class.
+ans:
+
+	import java.util.Scanner;
+	class SimpleInterest
+	{
+		public static void main(String[] args)
+		{
+			System.out.println("Enter amount, rate of interest and time in years:");
+			Scanner sc=new Scanner(System.in);
+			float amount= sc.nextFloat();
+			float rate= sc.nextFloat();
+			float year= sc.nextFloat();
+			
+			float interest=(amount*rate*year)/100;
+			System.out.println("Simple Interest: "+interest);
+		}
+		
+	}
+	
+output:
+		Enter amount, rate of interest and time in years:
+		20000
+		3
+		3
+		Simple Interest: 1800.0
+		
+		
+		
+		
+09.	Write a program to read the days (eg. 670 days) as integer value using Scanner class.
+	Now convert the entered days into complete years, months and days and print them.
+ans:
+
+	import java.util.Scanner;
+	class DaysToYears
+	{
+		public static void main(String[] args)
+		{
+			System.out.print("Enter number of days: ");
+			Scanner scan=new Scanner(System.in);
+			int days=scan.nextInt();
+			int years=days/365;
+			int months=(days%365)/30;
+			int days1=(days%365)%30;
+			System.out.println("Years: "+years+" Months: "+months+" Days: "+days1);
+		}
+	}
+		
+output:
+		Enter number of days: 400
+		Years: 1 Months: 1 Days: 5
+		
+		
+		
+
+10.	Write a program to convert temperature from Fahrenheit to Celsius. 
+	Take Fahrenheit as input using Scanner class. [ formula : C= 5*(f-32)/9 ]
+ans:
+
+	import java.util.Scanner;
+	class Temperature
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.print("Enter temperature in Fahrenheit: ");
+			float f=sc.nextFloat();
+			float c=5*(f-32)/9;
+			System.out.print("Temperature in Celsius: "+c);
+		}
+	}
+
+output:
+		Enter temperature in Fahrenheit: 89.54
+		Temperature in Celsius: 31.966667
+		
+		
+		
+11.	Write a program to swap two numbers without using third variable.
+ans:
+
+	import java.util.Scanner;
+	class Swap
+	{
+		public static void main(String[] args)
+		{
+			System.out.println("Enter 1st number: ");
+			Scanner scan=new Scanner(System.in);
+			int a=scan.nextInt();
+			System.out.println("Enter 2nd number: ");
+			int b=scan.nextInt();
+			a=a+b;
+			b=a-b;
+			a=a-b;
+			System.out.println("1st number: "+a+" and 2nd number: "+b);
+		}
+	}
+	
+output:		
+		Enter 1st number:
+		5
+		Enter 2nd number:
+		7
+		1st number: 7 and 2nd number: 5
+		
+		
+		
+12.	In a company an employee is paid as under: 
+	If his basic salary is less than Rs. 10000, then HRA = 10% of basic salary and DA = 90% of basic salary. 
+	If his salary is either equal to or above Rs. 10000, then HRA = Rs. 2000 and DA = 98% of basic salary. 
+	If the employee's salary is input by the user write a program to find his gross salary. [ formula : GS= Basic + DA + HRA ]
+ans:
+
+	import java.util.Scanner;
+	class Salary
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc= new Scanner(System.in);
+			System.out.println("Enter Salary");
+			double sal=sc.nextDouble();
+			if(sal<10000)
+			{
+				System.out.println("Gross Salary: "+(sal+(10*sal/100)+(90*sal/100)));
+			}
+			else if(sal>=10000)
+			{
+				System.out.println("Gross Salary: "+(sal+2000+(98*sal/100)));
+			}
+		}
+	}
+	
+output:
+		Enter Salary
+		100
+		Gross Salary: 200.0
+
+		Enter Salary
+		10000
+		Gross Salary: 21800.0
+		
+		
+		
+
+13.	Program to find greatest in 3 numbers. 
+	[ once using if else statement and then using ternary operator ( logical operator) ]  
+ans:
+
+	import java.util.Scanner;
+	class Greatest
+		{
+			public static void main(String[] args)
+			{
+				Scanner scan=new Scanner(System.in);
+				System.out.println("Enter three numbers: ");
+				int a=scan.nextInt();
+				int b=scan.nextInt();
+				int c=scan.nextInt();
+				
+					//Using if-else
+				if(a>=b&&a>=c)
+					{
+						System.out.println("Greatest number: "+a);
+					}
+				else if(b>=a&&b>=c)
+					{
+						System.out.println("Greatest number: "+b);
+					}
+				else
+					{
+						System.out.println("Greatest number: "+c);
+					}
+					
+						//Using Ternary operator
+				int d=(a>=b&&a>=c)?a:(b>=a&&b>=c)?b:c;
+				System.out.println("Greatest number using ternary operator: "+d);
+			}
+			
+		}
+		
+output:
+		Enter three numbers:
+		5
+		3
+		1
+		Greatest number: 5
+		Greatest number using ternary operator: 5
+		
+		
+		
+		
+14.	Program to check that entered year is a leap year or not.
+ans:
+
+	import java.util.Scanner;
+	class Leap
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan = new Scanner(System.in);
+			System.out.print("Enter a year: ");
+			int year=scan.nextInt();
+			if(year%400==0)
+			{
+				System.out.println("Leap year!");
+			}
+			else if(year%4==0)
+			{
+				if(year%100==0)
+				{
+					System.out.println("Non-leap year!");
+				}
+				else
+				{
+					System.out.println("Leap year!");
+				}
+			}
+			else
+			{
+				System.out.println("Non-leap year!");
+			}
+			
+		}
+	}
+	
+output:
+		Enter a year: 2000
+		Leap year!
+
+		Enter a year: 1700
+		Non-leap year!
+		
+		
+		
+		
+15.	Accept person’s gender (character m for male and f for female), age (integer), as input 
+	and then check whether person is eligible for marriage or not.
+ans:
+
+	import java.util.Scanner;
+	class Marriage
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.print("You are-male(press m) or female(press f): ");
+			char gender=sc.next().charAt(0);
+			System.out.print("Enter age: ");
+			int age=sc.nextInt();
+			if(gender=='f'&&age>=18)
+			{
+				System.out.print("You are eligible for marriage!");
+			}
+			else if(gender=='m'&&age>=22)
+			{
+				System.out.print("You are eligible for marriage!");
+			}
+			else
+			{
+				System.out.print("You are NOT eligible for marriage!");
+			}
+			
+		}
+	}
+	
+output:
+		You are-male(press m) or female(press f): m
+		Enter age: 10
+		You are NOT eligible for marriage!
+
+		You are-male(press m) or female(press f): f
+		Enter age: 30
+		You are eligible for marriage!
+		
+		
+		
+16.	Write a program to print table of any entered number using loop
+ans:
+
+	import java.util.Scanner;
+	class Table
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter a number: ");
+			int n=scan.nextInt();
+			int i=1;
+			do
+			{
+				System.out.println(n*i);
+				i++;
+			}while(i<=10);
+		}
+	}
+	
+output:
+		Enter a number: 10
+		10
+		20
+		30
+		40
+		50
+		60
+		70
+		80
+		90
+		100
+		
+		
+		
+		
+17.	Write a program to reverse a given number.
+ans:
+
+	import java.util.Scanner;
+	class ReverseNum
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter a number: ");
+			int num=scan.nextInt();
+			int rev=0;
+			while(num!=0)
+			{
+				rev=rev*10+num%10;
+				num=num/10;
+			}
+			System.out.println("Reverse: "+rev);
+		}
+	}
+	
+output:
+		Enter a number: 12345
+		Reverse: 54321
+		
+		
+		
+18.	Program to check whether number is prime or not.
+ans:
+
+	import java.util.Scanner;
+	class Prime
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter a number: ");
+			int num=scan.nextInt();
+			int x=num/2;
+			boolean flag=true;
+			if(num==0||num==1)
+			{
+				System.out.println("Not a prime number.");
+			}
+			else
+			{
+				for(int i=2; i<=x; i++)
+				{
+					if(num%i==0)
+					{
+						flag=false;
+					}
+				}
+				if(flag==true)
+				{
+					System.out.print("Prime number");
+				}
+				else
+				{
+					System.out.println("Not a Prime number.");
+				}
+			}
+		}
+	}
+	
+output:
+		Enter a number: 173
+		Prime number
+		
+		Enter a number: 236
+		Not a Prime number.
+		
+		
+		
+19.	Calculate  series : 12+22+32+42+.........+n2
+ans:
+
+	import java.util.Scanner;
+	class Series
+	{
+		public static void main(String[] args)
+		{
+			int a=12,sum=0;
+		
+			for(int i=1; i<10; i++)
+			{
+				sum=a+sum;
+				a=a+10;
+			}
+			System.out.println("Sum: "+sum);
+		}
+	}
+	
+output:
+		Sum: 468
+		
+		
+		
+		
+20.	Print all prime numbers between two given numbers. [ break continue ]
+ans:
+
+	import java.util.Scanner;
+	class PrimeInRange
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter lower range: ");
+			int lower=scan.nextInt();
+			System.out.print("Enter upper range: ");
+			int upper=scan.nextInt();
+
+			for(int i=lower; i<=upper; i++)
+			{
+				int x=i/2;
+				if(i==0||i==1)
+				{
+				}
+				else
+				{
+					boolean flag=true;
+					for(int j=2; j<=x; j++)
+					{
+						if(i%j==0)
+						{
+							flag=false;
+						}
+					}
+					if(flag==true)
+					{
+						System.out.println(i);
+					}
+				}
+			}
+		}
+	}
+	
+output:
+		Enter lower range: 2
+		Enter upper range: 20
+		2
+		3
+		5
+		7
+		11
+		13
+		17
+		19
+		
+		
+		
+21.	Program to show sum and average of 10 element array. Accept array elements from user. 
+ans:
+
+	import java.util.Scanner;
+	class ArraySum
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 10 numbers: ");
+			int arr[]=new int[10];
+			int sum=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+			for(int i:arr)
+			{
+				sum=sum+i;
+			}
+			System.out.println("Sum: "+sum);
+			System.out.println("Average: "+(sum/arr.length));
+		}
+	}
+	
+output:
+		Enter 10 numbers:
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		Sum: 20
+		Average: 2
+		
+		
+		
+		
+22.	Sort a ten element array in descending order.
+ans:
+
+	import java.util.*;
+	class ArraySort
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 10 numbers: ");
+			int arr[]=new int[10];
+			int x=0,max=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+
+			for(int j=0; j<arr.length; j++)
+			{
+				max=arr[j];
+				for(int i=j; i<arr.length; i++)
+				{
+					if (arr[i]>max)
+					{
+						max=arr[i];
+					}
+				}
+				for(int i=j; i<arr.length; i++)
+				{
+					if (arr[i]==max)
+					{
+						arr[i]=arr[j];
+						arr[j]=max;
+					}
+				}
+				
+			}
+				
+			
+			System.out.println("Sorted array in descending order: ");
+			for(int i:arr)
+			{
+				System.out.println(i);
+			}
+			
+		}
+	}
+
+
+output:
+		Enter 10 numbers:
+		23
+		2
+		12
+		14
+		5
+		67
+		89
+		65
+		43
+		21
+		Sorted array in descending order:
+		89
+		67
+		65
+		43
+		23
+		21
+		14
+		12
+		5
+		2
+		
+		
+		
+		
+23.	Write a program to reverse the array elements
+ans:
+
+	import java.util.*;
+	class ArrayReverse
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 7 numbers: ");
+			int arr[]=new int[7];
+			int s=0,e=arr.length-1;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+
+			for(int j=1; j<=arr.length/2; j++)
+			{
+				arr[s]=arr[e]+arr[s];
+				arr[e]=arr[s]-arr[e];
+				arr[s]=arr[s]-arr[e];
+				s+=1;
+				e-=1;
+			}
+				
+			
+			System.out.println("Array in reverse order: ");
+			for(int i:arr)
+			{
+				System.out.println(i);
+			}
+			
+		}
+	}
+	
+output:
+		Enter 7 numbers:
+		11
+		22
+		33
+		4
+		55
+		66
+		77
+		Array in reverse order:
+		77
+		66
+		55
+		4
+		33
+		22
+		11
+		
+		
+		
+		
+24.	Write a program to search an element in the array
+ans:
+
+	import java.util.*;
+	class ArraySearch
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 7 numbers: ");
+			int arr[]=new int[7];
+			int flag=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+			
+			System.out.print("Enter a number to search in the array: ");
+			int num=scan.nextInt();
+			for(int j=0; j<arr.length; j++)
+			{
+				if(arr[j]==num)
+				{
+					System.out.println("Number found at "+j+"th index");
+					flag++;
+				}
+			}
+				
+			if(flag==0)
+			{
+				System.out.println("Enement not found");
+			}
+			
+		}
+	}
+	
+output:
+		Enter 7 numbers:
+		1
+		2
+		3
+		4
+		5
+		6
+		7
+		Enter a number to search in the array: 4
+		Number found at 3th index
+
+		Enter 7 numbers:
+		1
+		2
+		3
+		4
+		5
+		6
+		7
+		Enter a number to search in the array: 9
+		Enement not found
+		
+		
+		
+		
+25.	Write a program to search an element in the array
+ans:
+
+	import java.util.*;
+	class ArrayOddEven
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 7 numbers: ");
+			int arr[]=new int[7];
+			int oddSum=0;
+			int evenSum=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+			
+			for(int j=0; j<arr.length; j++)
+			{
+				if(arr[j]%2==0)
+				{
+					evenSum=evenSum+arr[j];
+				}
+				else
+				{
+					oddSum=oddSum+arr[j];
+				}
+			}
+			
+			System.out.println("Sum of Even numbers: "+evenSum);
+			System.out.println("Sum of Odd numbers: "+oddSum);
+		}
+	}
+	
+output:
+		Enter 7 numbers:
+		2
+		2
+		2
+		3
+		3
+		3
+		3
+		Sum of Even numbers: 6
+		Sum of Odd numbers: 12

@@ -1,0 +1,379 @@
+
+			ASSIGNMENT - 3
+			(Core JAVA)
+			
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+26.	Create an array of 17 elements in 5 rows.  And calculate sum of all elements.
+ans:
+
+	import java.util.*;
+	class Array2D 
+	{
+		public static void main(String[] args) 
+		{
+			Scanner sc =new Scanner(System.in);
+			int [][]ar=new int[3][4];  //5*17 is lenghty to verify the output, so taking 3*4
+
+			for(int i=0;i<ar.length;i++)
+			{
+				for(int j=0;j<ar[i].length;j++)
+				{
+					ar[i][j]=sc.nextInt();
+				}
+			}
+			int sum=0;
+			for(int i=0;i<ar.length;i++)
+			{
+				for(int j:ar[i])
+				{
+					sum=sum+j;
+				}
+			   
+			}
+
+			System.out.println("sum "+sum);
+		}
+	}
+
+output:
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		1
+		sum 12
+		
+		
+		
+
+27.	Write a program to fine the smallest and greatest number present in the array of integer type.
+ans:
+
+	import java.util.Scanner;
+	class Find
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("How many numbers: ");
+			int n= scan.nextInt();
+			int arr[]=new int[n];
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+			
+			int max=arr[0];
+			for(int i=0; i<arr.length; i++)
+			{
+				if(max<arr[i])
+				{
+					max=max+arr[i];
+					arr[i]=max-arr[i];
+					max=max-arr[i];
+				}
+			}
+			
+			int min=arr[0];
+			for(int i=0; i<arr.length; i++)
+			{
+				if(min>arr[i])
+				{
+					min=min+arr[i];
+					arr[i]=min-arr[i];
+					min=min-arr[i];
+				}
+			}
+			
+			System.out.println("Max: "+max);
+			System.out.println("Min: "+min);
+		}
+	}
+	
+output:
+		How many numbers: 5
+		33
+		45
+		67
+		22
+		89
+		Max: 89
+		Min: 22
+		
+		
+		
+		
+28.	Initialize one String type of array and print the elements using for each loop.
+ans:
+
+	import java.util.Scanner;
+	class ArrayString
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("How many strings: ");
+			int n= scan.nextInt();
+			String arr[]=new String[n];
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.next();
+			}
+			
+			for(String names:arr)
+			{
+				System.out.print(names+" ");
+			}
+		}
+	}
+	
+output:
+	How many strings: 3
+	rahulya
+	shubhya
+	partya
+	rahulya shubhya partya
+	
+	
+	
+
+
+29.	Write a program to print the total number of one-D arrays in a two-D array 
+	and the number of elements in every one-D array present in the two-D arrays.
+ans:
+
+	import java.util.Scanner;
+
+	class Array2D_1 
+	{
+		public static void main(String[] args) 
+		{
+			Scanner sc =new Scanner(System.in);
+			int [][]ar=new int[3][4];
+
+			for(int i=0;i<ar.length;i++)
+			{
+				for(int j=0;j<ar[i].length;j++)
+				{
+					ar[i][j]=sc.nextInt();
+				}
+			}
+			
+			System.out.println("Number of arrays: "+ar.length);
+			
+			int count=0;
+			for(int p[]:ar)
+			{
+				for(int q:p)
+				{
+					count++;
+				}
+			}
+			
+			System.out.println("Total elements: "+count);
+		}
+	}
+	
+output:
+		1
+		2
+		3
+		4
+		5
+		6
+		7
+		8
+		9
+		8
+		7
+		6
+		Number of arrays: 3
+		Total elements: 12
+		
+		
+
+
+
+30.	Create an integer type 2-D array of size [3X3]. 
+	Take the elements from the user and then calculate the sum of the elements present in the diagonal.
+ans:
+
+	import java.util.Scanner;
+
+	class ArrayDiagonal
+	{
+		public static void main(String[] args) 
+		{
+			Scanner sc =new Scanner(System.in);
+			int [][]ar=new int[3][3];
+			
+			System.out.println("Enter 3*3 elements:");
+			for(int i=0;i<ar.length;i++)
+			{
+				for(int j=0;j<ar[i].length;j++)
+				{
+					ar[i][j]=sc.nextInt();
+				}
+			}
+			
+			System.out.println("Diagonal Elements:");
+			
+			for(int i=0;i<ar.length;i++)
+			{
+				for(int j=0;j<ar[i].length;j++)
+				{
+					if(i==j)
+					{
+						System.out.println(ar[i][j]);
+					}
+				}
+			}
+		}
+	}
+		
+output:		
+		Enter 3*3 elements:
+		11
+		12
+		13
+		21
+		22
+		23
+		31
+		32
+		33
+		Diagonal Elements:
+		11
+		22
+		33
+	
+	
+	
+		
+		
+31.	Create a class Student with 2 data members rno and name. 
+	Create one method setData() that takes roll number and student name as parameter and stores them in data members rno and name. 
+	Create one more method showData() to print the data member values. 
+	Create another class ( main class) StudentDemo that creates Student class object and calls setData() and showData() methods.
+ans:
+
+	import java.util.Scanner;
+	class Student
+	{
+		int rno;
+		String name;
+		
+		void setData(int rno, String name)
+		{
+			this.rno=rno;
+			this.name=name;
+		}
+		
+		void showData()
+		{
+			System.out.println("Roll No.: "+rno);
+			System.out.println("Name: "+name);
+		}
+	}
+
+	class StudentDemo
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter roll no: ");
+			int rno=scan.nextInt();
+			System.out.println("Enter Name: ");
+			String name=scan.next();
+			
+			Student s1=new Student();
+			s1.setData(rno,name);
+			s1.showData();
+		}
+	}		
+		
+output:
+		Enter roll no:
+		628746
+		Enter Name:
+		pratik
+		
+		Roll No.: 628746
+		Name: pratik
+		
+		
+	
+
+
+
+32.	Modify the above program (no. 31) to count the no of Student objects created. [ In this program static variable is required ]
+ans:
+
+	import java.util.Scanner;
+	class Student1
+	{
+		int rno;
+		String name;
+		static int count=0;
+		
+		Student1()
+		{
+			count++;
+		}
+		
+		void setData(int rno, String name)
+		{
+			this.rno=rno;
+			this.name=name;
+		}
+		
+		void showData()
+		{
+			System.out.println("Roll No.: "+rno);
+			System.out.println("Name: "+name);
+		}
+	}
+
+	class StudentDemo1
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter roll no: ");
+			int rno=scan.nextInt();
+			System.out.println("Enter Name: ");
+			String name=scan.next();
+			
+			Student1 s1=new Student1();
+			s1.setData(rno,name);
+			s1.showData();
+			
+			Student1 s6=new Student1();
+			Student1 s2=new Student1();
+			Student1 s3=new Student1();
+			Student1 s4=new Student1();
+			Student1 s5=new Student1();
+			
+			System.out.println("Total objects: "+s1.count);
+			
+		}
+	}	
+		
+output:
+		Enter roll no:
+		007
+		Enter Name:
+		BondSir
+		Roll No.: 7
+		Name: BondSir
+		Total objects: 6
