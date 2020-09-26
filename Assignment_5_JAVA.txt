@@ -1,0 +1,393 @@
+
+			ASSIGNMENT - 5
+			(Core JAVA)
+			
+			
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+43.	Create a class OneBHK with instance variables roomArea, hallArea and price.
+	Then create default constructor that initializes instance variables with some values and a parameterized constructor that takes values for all instance variables and stores them in instance variables. 
+	Now create a method named show()  to print OneBHK’s instance variable values.
+	Create another class TwoBHK which has (inherites) all the properties and behaviors of OneBHK and a new instance variable room2Area. 
+	Then create default constructor to initialize all 4 instance variables and a parameterized constructor to take the values for initialization of all instance variables. Override show() method to print all data member information.
+	Write main method in another class (Say Demo) and store three TwoBHK flat’s information and print information using show method. Also print total amount of all flats. 
+ans:
+
+	class OneBHK
+	{
+		float roomArea,hallArea,price;
+		OneBHK()
+		{
+			roomArea=100;
+			hallArea=200;
+			price=10000;
+		}
+		OneBHK(float roomArea,float hallArea,float price)
+		{
+			this.roomArea=roomArea;
+			this.hallArea=hallArea;
+			this.price=price;
+		}
+		void show()
+		{
+			System.out.println("Room Area : "+roomArea);
+			System.out.println("Hall Area : "+hallArea);
+			System.out.println("Price : "+price);
+		}	
+	}
+
+
+	class TwoBHK extends OneBHK
+	{
+		float room2Area;
+		static float sum=0;
+		TwoBHK()
+		{
+			room2Area=100;
+		}
+		TwoBHK(float roomArea,float room2Area,float hallArea,float price)
+		{
+			this.roomArea=roomArea;
+			this.hallArea=hallArea;
+			this.room2Area=room2Area;
+			this.price=price;
+			
+			sum+=price;
+		}
+		void show()
+		{
+			System.out.println("Room Area : "+roomArea);
+			System.out.println("Room Area : "+room2Area);
+			System.out.println("Hall Area : "+hallArea);
+			System.out.println("Price : "+price);
+		}	
+	}
+
+
+	class Demo_43
+	{
+		public static void main(String args[])
+		{
+			float sum;
+			TwoBHK B1=new TwoBHK(100,100,200,10000);
+			TwoBHK B2=new TwoBHK(200,200,300,20000);
+			TwoBHK B3=new TwoBHK(300,300,400,30000);
+			System.out.println("Flat 1 info : ");
+			B1.show();
+			System.out.println("\n Flat 2 info : ");
+			B2.show();
+			System.out.println("\n Flat 3 info : ");
+			B3.show();
+			
+			sum=TwoBHK.sum;
+			System.out.println("\n\n Total price : "+sum);
+		}
+	}
+
+output:
+		Flat 1 info :
+		Room Area : 100.0
+		Room Area : 100.0
+		Hall Area : 200.0
+		Price : 10000.0
+
+		 Flat 2 info :
+		Room Area : 200.0
+		Room Area : 200.0
+		Hall Area : 300.0
+		Price : 20000.0
+
+		 Flat 3 info :
+		Room Area : 300.0
+		Room Area : 300.0
+		Hall Area : 400.0
+		Price : 30000.0
+
+
+		 Total price : 60000.0
+		 
+		 
+		 
+
+
+
+
+45.	-Create a class Student with two members : rollno and percentage. 
+	 Create default and parameterized constructors. Create method show() to display information. 
+	-Create another class CollegeStudent inherits Student class. Add a new member semester to it. 
+	 Create default and parameterized constructors. Also override show() method that calls super class show() method and displays semester. 
+	-Create another class SchoolStudent inherits Student class. Add a new member className(eg 12th ,10th etc.) to it. 
+	 Create default and parameterized constructors. Also override show() method that calls super class show() method and displays className.
+	
+	Create a class( say Demo) with main method that carries out the operation of the project : 
+		-- has array to store objects of any class(Student,  CollegeStudent or SchoolStudent) 
+		-- create two CollegeStudent  and three SchoolStudent objects and store them inside the array 
+		-- displaxy all records from the array 
+		-- search record on the basic of rollno and check given rollno is of SchoolStudent or of CollegeStudent. 
+		-- count how many students are having A grade, if for A grade percentage >75.)
+ans:
+
+	import java.util.Scanner;
+	class Student
+	{
+		int rollno;
+		float percentage;
+		
+		Student()
+		{
+			rollno=1;
+			percentage=60f;
+		}
+		Student(int rollno,float percentage)
+		{
+			this.rollno=rollno;
+			this.percentage=percentage;
+		}
+		void show()
+		{
+			System.out.println("Roll no: "+rollno);
+			System.out.println("Percentage: "+percentage);
+		}
+	}
+	
+	
+	class CollegeStudent extends Student
+	{
+		int semester;
+		
+		CollegeStudent()
+		{
+			semester=1;
+		}
+		CollegeStudent(int rollno, float percentage,int semester)
+		{
+			super(rollno,percentage);
+			this.semester=semester;
+		}
+		
+		void show()
+		{
+			super.show();
+			System.out.println("Semister : "+semester+"\n");
+		}
+	}
+	
+	
+	class SchoolStudent extends Student
+	{
+		String className;
+		
+		SchoolStudent()
+		{
+			className="CS";
+		}
+		SchoolStudent(int rollno, float percentage,String className)
+		{
+			super(rollno,percentage);
+			this.className=className;
+		}
+		
+		void show()
+		{
+			super.show();
+			System.out.println("Class Name : "+className+"\n");
+			
+		}
+		
+	}
+
+
+	class Q45_StudentDemo
+	{
+		public static void main(String args[])
+		{
+			int count=0;
+			CollegeStudent c1=new CollegeStudent(100,90.18f,2);
+			CollegeStudent c2=new CollegeStudent(101,82.0f,3);
+			SchoolStudent s1=new SchoolStudent(101,87.36f,"Science");
+			SchoolStudent s2=new SchoolStudent(102,85.56f,"Commerce");
+			SchoolStudent s3=new SchoolStudent(103,69.19f,"Arts");
+			
+			Student ar[]=new Student[]{c1,c2,s1,s2,s3};
+			
+			for(Student ref: ar)
+			{
+				ref.show();
+			}
+			
+			Scanner scan=new Scanner(System.in);
+			System.out.print("\n\n Enter roll no.:");
+			int rollno=scan.nextInt();
+			
+			for(Student ref: ar)
+			{
+				if(rollno==ref.rollno)
+				ref.show();
+			}
+			
+			for(Student ref: ar)
+			{
+				if(ref.percentage>75)
+				count++;
+			}
+			System.out.print("Number of Students having A grade: "+count);
+		}
+	}		 
+		 
+output:
+	Roll no: 100
+	Percentage: 90.18
+	Semister : 2
+
+	Roll no: 101
+	Percentage: 82.0
+	Semister : 3
+
+	Roll no: 101
+	Percentage: 87.36
+	Class Name : Science
+
+	Roll no: 102
+	Percentage: 85.56
+	Class Name : Commerce
+
+	Roll no: 103
+	Percentage: 69.19
+	Class Name : Arts
+
+
+
+	 Enter roll no.:102
+	Roll no: 102
+	Percentage: 85.56
+	Class Name : Commerce
+
+	Number of Students having A grade: 4
+	
+	
+	
+		
+	
+46.	Create a program to demonstrate the use of instanceof operator or secure reference down casting.
+ans:
+
+	class Person
+	{
+		String name;
+		int age;
+		
+		Person(String name, int age)
+		{
+			this.age=age;
+			this.name=name;
+		}
+		
+		void show()
+		{
+			System.out.println("Name: "+name);
+			System.out.println("Age: "+age);
+		}
+	}
+
+	class Employee extends Person
+	{
+		float salary;
+		
+		Employee(String name,int age,float salary)
+		{
+			super(name,age);
+			this.salary=salary;
+		}
+		
+		void show()
+		{
+			super.show();
+			System.out.println("Salary: "+salary);
+			
+		}
+	}
+
+	class Q46_Demo
+	{
+		public static void main(String[] args)
+		{
+			Person p[]={new Employee("Ram",24,15000), new Person("Shyam",23)};
+			
+			for(Person ref:p)
+			{
+				if(ref instanceof Employee) //use of instanceof operator for secure dowmcasting. (here, for downcasting, instance must be of employee!)
+				{
+					Employee e=(Employee)ref;
+					ref.show();
+				}
+			}
+		}
+	}
+	
+output:
+		Name: Ram
+		Age: 24
+		Salary: 15000.0
+
+
+
+
+47.	Create a program to demonstrate constructor chaining.
+ans:
+
+	class A
+	{
+		A()
+		{
+			this(10,20);
+			System.out.println("In non-para of A");	//3
+		}
+		A(int a)
+		{
+			System.out.println("In single para of A");  //1
+		}
+		A(int a1,int a2)
+		{
+			this(30);
+			System.out.println("In double para of A");  //2
+		}
+	}
+
+	class B extends A
+	{
+		B()
+		{
+			this(10);
+			System.out.println("In non-para of B");   //5
+		}
+		B(int b)
+		{
+			System.out.println("In para of B");  //4
+		}
+	}
+
+	class Q47_Demo
+	{
+		public static void main(String[] args)
+		{
+			B obj=new B();
+		}
+	}
+
+output:
+		In single para of A
+		In double para of A
+		In non-para of A
+		In para of B
+		In non-para of B
+		
+		
+		
+		
+
+
+		
+		
+		
+		
+		
