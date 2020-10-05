@@ -1,0 +1,199 @@
+
+			ASSIGNMENT - 8
+			
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+52.	Input name of a person and count how many vowels it contains.  Use String class functions. 
+ans:
+	package Q52;
+	import java.util.Scanner;
+	public class Q52 
+	{
+		static int count=0;
+		public static void main(String[] args) 
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.print("Enter a string : ");
+			String s=sc.nextLine();
+			for(int i=0;i<s.length();i++)
+			{
+				if(s.charAt(i)=='a'||s.charAt(i)=='e'||s.charAt(i)=='i'||s.charAt(i)=='o'||s.charAt(i)=='u'||
+				   s.charAt(i)=='A'||s.charAt(i)=='E'||s.charAt(i)=='I'||s.charAt(i)=='O'||s.charAt(i)=='U')
+				{
+					count++;
+				}
+			}
+			System.out.println("Total vowels: "+count);
+		}
+
+	}
+	
+output:
+		Enter a string : RAHUL khot
+		Total vowels: 3
+		
+		
+	
+	
+		
+53.	Input data exactly in the following format, and print sum of all integer values “67, 89, 23, 67, 12, 55, 66”.   
+	(Hint use String class split method and Integer class parseInt method) .
+ans:
+	package Q53;
+	public class Q53 
+	{
+		public static void main(String[] args) 
+		{
+			int sum=0;
+			String s= new String("67, 89, 23, 67, 12, 55, 66");
+			String ar[]=s.split(", ");
+			for(String str:ar)
+			{
+				sum+=Integer.parseInt(str);
+			}
+			System.out.println("Sum: "+sum);
+		}
+	}
+	
+output:
+		Sum: 379
+		
+		
+		
+		
+
+54.	Write a program to reverse the given String.
+ans:
+	package Q54;
+	import java.util.Scanner;
+	public class Q54 
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.print("Enter a string : ");
+			String s=sc.nextLine();
+			char ar[]=new char[s.length()];
+			for(int i=0; i<s.length(); i++)
+			{
+				ar[i]=s.charAt(s.length()-1-i);
+			}
+			for(char c:ar)
+			{
+				System.out.print(c);
+				
+			}
+		}	
+	}
+	
+output:
+		Enter a string : rahul khot
+		tohk luhar
+		
+		
+		
+		
+55.	Write a program to count no of words in the String.
+ans:
+		
+	package Q55;
+	import java.util.Scanner;
+	public class Q55 
+	{
+		static int count=0;
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.print("Enter a string : ");
+			String s=sc.nextLine();
+			String ar[]=s.split(" ");
+			for(String str:ar)
+			{
+				count++;
+			}
+			System.out.println("Total words: "+count);
+		}
+	}
+
+output:
+		Enter a string : Rahul Khot here
+		Total words: 3
+
+		
+		
+		
+		
+56.	Write a program to convert very first character of every word in uppercase in a String.
+ans:
+	package Q56;
+	import java.util.Scanner;
+	public class Q56 
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.print("Enter a string : ");
+			String s=sc.nextLine();
+			char ar[]=s.toCharArray();
+			for(int i=0; i<s.length(); i++)
+			{
+				if(i==0)
+				{
+					int a=ar[i];
+					a-=32;
+					ar[i]=(char)a;
+				}
+				else if(ar[i-1]==' ')
+				{
+					int a=ar[i];
+					a-=32;
+					ar[i]=(char)a;
+				}
+			}
+			for(char c:ar)
+			{
+				System.out.print(c);
+			}
+		}	
+	}
+
+output:
+		Enter a string : rahul khot
+		Rahul Khot
+		
+		
+		
+		
+	
+57.	Write a program to reverse every word of the String.
+ans:
+	
+	package Q57;
+	import java.util.Scanner;
+
+	public class Q57 
+	{ 
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.print("Enter a string : ");
+			String s=sc.nextLine();
+			String str[]=s.split(" ");
+			
+			for(String str1:str)
+			{
+				for(int i=0; i<str1.length(); i++)
+				{
+					char c=str1.charAt(str1.length()-1-i);
+					System.out.print(c);
+				}
+				System.out.print(" ");
+			}
+			
+		}
+	}
+	
+output:
+		Enter a string : rahul khot
+		luhar tohk
