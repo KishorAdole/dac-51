@@ -1,0 +1,268 @@
+
+			ASSIGNMENT - 7
+			
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+50.	Explain the importance of toString() and equals() method of the Object class and override them on class Employee(empId,name,salary).  
+	b. Display all employee info using toString method.
+ans:
+
+	// toString() METHOD WITHOUT OVERRIDING:
+	
+		package assignment7;
+		class Employee
+		{
+			int empid;
+			String name;
+			public Employee(int empid, String name) 
+			{
+				super();
+				this.empid = empid;
+				this.name = name;
+			}
+			
+		}
+		public class Q50
+		{
+			public static void main(String[] args)
+			{
+				Employee e=new Employee(12324, "Rahul");
+				System.out.println(e);						/* As we have not overridden the toString method, control will go to superclass of employee 
+															   which in this case we havent provided. 
+															   but its default superclass is Object and its toString method will be called! */ 
+			}
+		}
+		
+	output:	
+			assignment7.Employee@15db9742
+
+
+
+	
+	//toString() METHOD WITH OVERRIDING:
+		
+		package assignment7;
+		class Employee1
+		{
+			int empid;
+			String name;
+			public Employee1(int empid, String name) 
+			{
+				super();
+				this.empid = empid;
+				this.name = name;
+			}
+			@Override  //annotation
+			public String toString() //  here we have overridden the toString method 
+			{
+				return "Employee [empid=" + empid + ", name=" + name + "]";
+			}
+			
+			
+		}
+		public class Q50A
+		{
+			public static void main(String[] args)
+			{
+				Employee1 e=new Employee1(12324, "Rahul");
+				System.out.println(e);		// As we have overridden the toString method, control will not go to superclass of employee and it will now go to toSting method of Employee class.   
+			}
+		}
+    
+	output:
+			Employee [empid=12324, name=Rahul]
+			
+			
+			
+			
+			
+	// equals() METHOD WITHOUT OVERRIDING:
+	
+		package assignment7;
+		class Person
+		{
+			int pid;
+			String name;
+			public Person(int pid, String name) 
+			{	super();
+				this.pid = pid;
+				this.name = name;
+			}
+			
+		}
+		public class Q50B
+		{
+			public static void main(String[] args) 
+			{
+				Person p1=new Person(76, "Rahul");
+				Person p2=new Person(92, "Shubham");
+				Person p3=p2;
+				System.out.println("p1 and p2 has Equal reference? =>"+p1.equals(p2)); //equal() method has not overridden. so, it will check if reference of objects is same or not.
+				System.out.println("p1 and p3 has Equal reference? =>"+p2.equals(p3)); 
+			}
+		}
+
+	output:
+			p1 and p2 has Equal reference? =>false
+			p1 and p3 has Equal reference? =>true
+
+
+
+
+
+	// equals() METHOD OVERRIDING:
+	
+		package assignment7;
+		class Person1
+		{
+			int pid;
+			String name;
+			public Person1(int pid, String name) 
+			{	super();
+				this.pid = pid;
+				this.name = name;
+			}
+			public boolean equals (Object obj)
+			{
+				Person1 p=(Person1)obj;
+				if(this.pid==p.pid && this.name==p.name)
+				{
+					return true;
+				}
+				return false;
+			}
+		}
+		public class Q50C
+		{
+			public static void main(String[] args) 
+			{
+				Person1 p1=new Person1(76, "Rahul");
+				Person1 p2=new Person1(92, "Shubham");
+				Person1 p3=new Person1(76, "Rahul");
+				Person1 p4=p2;
+				System.out.println("p1 and p2 has Equal content? =>"+p1.equals(p2)); /*equal() method has overridden. 
+																						so, it will NOT check if reference of objects is same or not, BUT will check if defined content is same or not!*/
+				System.out.println("p1 and p3 has Equal content? =>"+p1.equals(p3)); 
+				System.out.println("p4 and p2 has Equal content? =>"+p2.equals(p4)); 
+			}
+		}
+
+	output:
+			p1 and p2 has Equal content? =>false
+			p1 and p3 has Equal content? =>true
+			p4 and p2 has Equal content? =>true
+			
+			
+			
+
+Q50 a. Create class for main method(say XYZ),and accept five employees information and store in an array. 
+		Also ensure if entered empId already exist or not (use equals method).
+	
+ans:
+	package assignment7;
+	import java.util.*;
+	class Employee2
+	{
+		int empid;
+		String name;
+		float salary;
+		void input(int empid, String name, float salary) 
+		{
+			this.empid = empid;
+			this.name = name;
+			this.salary = salary;
+		}
+		public boolean equals(Object obj)
+		{
+			Employee2 E=(Employee2)obj;
+			return this.empid==E.empid;
+		}
+		@Override
+		public String toString()
+		{
+			return "Employee2 [empid=" + empid + ", name=" + name + ", salary=" + salary + "]";
+		}
+		
+	}
+	public class Q50_a 
+	{
+		public static void main(String[] args)
+		{
+			
+			Scanner sc=new Scanner(System.in);
+			
+			Employee2 e1=new Employee2();
+			Employee2 e2=new Employee2();
+			Employee2 e3=new Employee2();
+			Employee2 e4=new Employee2();
+			Employee2 e5=new Employee2();
+			
+			Employee2 e[]= {e1,e2,e3,e4,e5};
+			for(int i=0;i<5;i++)
+			{
+					System.out.println("Enter empid, name and salary:");
+					int empid=sc.nextInt();
+					String name=sc.next();
+					float salary=sc.nextFloat();
+					if(i==0)
+					{
+						e[i].input(empid, name, salary);
+					}
+					else 
+					{
+						e[i].input(empid, name, salary);
+						
+							if(e[i-1].equals(e[i]))
+							{
+								System.out.println("This person already exists, Enter again!");
+								i=i-1;
+							}
+					}
+			}
+			for(Employee2 emp:e)
+			{
+				System.out.println(emp);
+			}
+		}
+	}
+
+
+output:
+		Enter empid, name and salary:
+		1
+		rahul
+		10000
+		Enter empid, name and salary:
+		2
+		shubham
+		20000
+		Enter empid, name and salary:
+		3
+		pratik
+		30000
+		Enter empid, name and salary:
+		3
+		jayant
+		40000
+		This person already exists, Enter again!
+		Enter empid, name and salary:
+		4
+		jayant
+		40000
+		Enter empid, name and salary:
+		5
+		adam
+		50000
+		Employee2 [empid=1, name=rahul, salary=10000.0]
+		Employee2 [empid=2, name=shubham, salary=20000.0]
+		Employee2 [empid=3, name=pratik, salary=30000.0]
+		Employee2 [empid=4, name=jayant, salary=40000.0]
+		Employee2 [empid=5, name=adam, salary=50000.0]
+
+				
+			
+
+
+
+

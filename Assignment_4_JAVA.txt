@@ -1,0 +1,818 @@
+
+			ASSIGNMENT - 4
+			(Core JAVA)
+			
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+33.	Write a program to demonstrate functionalities of this keyword in java. 
+ans:
+
+	//1. To refer variables of the current instance(object)//
+
+		==>		import java.util.Scanner;
+
+				class Student
+				{
+					int roll;
+					String name;
+					
+					void setData(int roll, String name)
+					{
+						this.roll=roll;
+						this.name=name;
+					}
+					
+					void showData()
+					{
+						System.out.println("Name: "+name);
+						System.out.println("Roll no: "+roll);
+					}
+				}
+
+				class StudentDemo
+				{
+					int roll;
+					String name;
+					
+					public static void main(String[] args)
+					{
+						Scanner scan=new Scanner(System.in);
+						System.out.print("Enter Roll no: ");
+						int roll=scan.nextInt();
+						System.out.print("Enter Name: ");
+						String name=scan.next();
+						
+						Student s1=new Student();
+						s1.setData(roll,name);
+						s1.showData();
+					}
+				}
+				
+			output:
+				1)	Enter Roll no: 123
+					Enter Name: rahul
+					
+					Name: rahul
+					Roll no: 123
+
+
+
+
+
+	//2. To pass current object as parameter of method.
+
+		==>		import java.util.Scanner;
+
+				class Student
+				{
+					int roll;
+					String name;
+					
+					Student()
+					{
+						System.out.println("IN NON-PARAMERIZED CONSTRUCTOR");
+						this.roll=12324;
+						this.name="Rahul";
+						
+					}
+
+					Student(int roll,String name)
+					{
+						System.out.println("IN 2-PARAMERIZED CONSTRUCTOR");
+						this.roll=roll;
+						this.name=name;
+						
+					}
+					
+					void test()
+					{
+						showData(this);
+					}
+					
+					void showData(Student obj)
+					{
+						System.out.println("Name: "+obj.name);
+						System.out.println("Roll no: "+obj.roll);	
+					}
+				}
+
+				class StudentDemo
+				{
+					public static void main(String[] args)
+					{
+						Scanner scan=new Scanner(System.in);
+						System.out.print("Enter Roll no: ");
+						int roll=scan.nextInt();
+						System.out.print("Enter Name: ");
+						String name=scan.next();
+						
+						Student s1=new Student(roll,name);
+						s1.test();
+						Student s2=new Student();
+						s2.test();
+					}
+				}
+
+		output:
+			2)	Enter Roll no: 007
+				Enter Name: Shubham
+				IN 2-PARAMERIZED CONSTRUCTOR
+				Name: Shubham
+				Roll no: 7
+				IN NON-PARAMERIZED CONSTRUCTOR
+				Name: Rahul
+				Roll no: 12324
+
+	
+	
+
+
+
+
+34.	Create a class Circle that has two data members, one to store the radius and another to store area 
+	and three methods first init() method to input radius from user, second calculateArea() method to calculate area of circle 
+	and third display() method to display values of radius and area. 
+	Create class CircleDemo ( main class) that creates the Circle object and calls init(), calculateArea() and display() methods.
+ans:
+
+	import java.util.Scanner;
+
+	class Circle
+	{
+		float r;
+		float a;
+		
+		void init(float r)
+		{
+			this.r=r;
+		}
+		
+		void calculateArea()
+		{
+			a=3.14f*r*r;
+		}
+		
+		void display()
+		{
+			System.out.println("Radius: "+r);
+			System.out.println("Area: "+a);
+		}
+	}
+
+	class CircleDemo
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter Radius: ");
+			float r=scan.nextFloat();
+			Circle c=new Circle();
+			c.init(r);
+			c.calculateArea();
+			c.display();
+		}
+	}
+
+output:
+		Enter Radius: 1.24
+		Radius: 1.24
+		Area: 4.8280644
+		
+		
+		
+		
+		
+
+35.	Create a class MathOperation that has four static methods- 
+	i)  add() method that takes two integer numbers as parameter and returns the sum of the numbers. 
+	ii) subtract() method that takes two integer numbers as parameter and returns the difference of the numbers. 
+	iii) multiply() method that takes two integer numbers as parameter and returns the product. 
+	iv) power() method that takes two integer numbers as parameter and returns the power of first number to second number. 
+ans:
+
+	import java.util.Scanner;
+	import java.lang.Math;
+	class MathOperation
+	{
+		
+		int add(int a,int b)
+		{
+			int s=a+b;
+			return s;
+		}
+		
+		int subtract(int a,int b)
+		{
+			int d=a-b;
+			return d;
+		}
+		
+		int multiply(int a, int b)
+		{
+			int m=a*b;
+			return m;
+		}
+		
+		double power(double a,double b)
+		{
+			double p=Math.pow(b,a);
+			return p;
+		}
+	}
+
+	class MathOpDemo
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter two numbers: ");
+			int a=sc.nextInt();
+			int b=sc.nextInt();
+			
+			MathOperation M1=new MathOperation();
+			
+			int s=M1.add(a,b);
+			System.out.println("Sum: "+s);
+			
+			int d=M1.subtract(a,b);
+			System.out.println("Subtract: "+d);
+			
+			int m=M1.multiply(a,b);
+			System.out.println("Multiplication: "+m);
+			
+			double p=M1.power(a,b);
+			System.out.println("Power: "+p);
+		}
+	}
+		
+output:
+		4
+		2
+		Sum: 6
+		Subtract: 2
+		Multiplication: 8
+		Power: 16.0		
+		
+		
+		
+		
+		
+
+36.	Create a class MathOperation containing overloaded methods ‘multiply’ to calculate multiplication of following arguments. 
+	a.	 two integers 
+	b.	 three floats 
+	c.	 all elements of array 
+	d.	one double and one integer 
+ans:
+
+	import java.util.Scanner;
+	//import java.lang.Math;
+	class MathOperation
+	{
+		
+		void multiply(int a, int b)
+		{
+			int m=a*b;
+			System.out.println("Multiplication1: "+m);
+		}
+		
+		void multiply(float a, float b,float c)
+		{
+			float m=a*b*c;
+			System.out.println("Multiplication2: "+m);
+		}
+		
+		void multiply(int [] arr)
+		{
+			int m=1;
+			for(int x:arr)
+			{
+				m*=x;
+			}
+			System.out.println("Multiplication3: "+m);
+		}
+		
+		void multiply(double a,int b)
+		{
+			double m=b*a;
+			System.out.println("Multiplication1: "+m);
+		}
+	}
+
+	class MethodOverload
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			int arr[]=new int[5];
+			MathOperation M1=new MathOperation();
+			
+			System.out.println("Enter two integers: ");
+			int a=sc.nextInt();
+			int b=sc.nextInt();
+			M1.multiply(a,b);
+			
+			System.out.println("Enter three decimals: ");
+			float c=sc.nextFloat();
+			float d=sc.nextFloat();
+			float e=sc.nextFloat();
+			M1.multiply(c,d,e);
+			
+			System.out.println("Enter 5 integers: ");
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=sc.nextInt();
+			}
+			M1.multiply(arr);
+			
+			System.out.println("Enter one decimal and one integer: ");
+			double f=sc.nextDouble();
+			int g=sc.nextInt();
+			M1.multiply(f,g);
+		}
+	}
+		
+output:
+		Enter two integers:
+		2
+		3
+		Multiplication1: 6
+		
+		Enter three decimals:
+		2.5
+		2.5
+		2.5
+		Multiplication2: 15.625
+		
+		Enter 5 integers:
+		2
+		2
+		2
+		2
+		2
+		Multiplication3: 32
+		
+		Enter one decimal and one integer:
+		2.5
+		3
+		Multiplication1: 7.5
+		
+		
+		
+		
+		
+
+37.	Create a class Person with properties (name and age) with following features. 
+	a.	Default age of person should be 18.
+	b.	A person object can be initialized with name and age.
+	c.	Method to display name and age of person
+	Create another class PersonDemo ( main class ) that demonstrates the functionalities of Person class by creating Person object and calling methods.
+ans:
+
+	import java.util.Scanner;
+
+	class Person
+	{
+		int age;
+		String name;
+		
+		Person()
+		{
+			age=18;
+		}
+		
+		void setData(int age, String name)
+		{
+			this.age=age;
+			this.name=name;
+		}
+		
+		void display()
+		{
+			System.out.println("Name: "+name);
+			System.out.println("Age: "+age);
+		}
+	}
+
+	class PersonDemo
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter Name: ");
+			String name=scan.next();
+			System.out.print("Enter age: ");
+			int age=scan.nextInt();
+			
+			Person P=new Person();
+			P.setData(age,name);
+			P.display();
+		}
+	}
+		
+output:
+		Enter Name: Pratik
+		Enter age: 21
+		
+		Name: Pratik
+		Age: 21
+		
+		
+		
+		
+
+38.	Create a class Employee with three data members (empNo, salary and totalSalary) and following features.
+	a.	Only parameterized constructor. [Do not overload the constructor]
+	b.	totalSalary always represents salary total of all the employees created.
+	c.	empNo should be auto incremented.
+	d.	display total employees and totalSalary using a method.
+	Create another class EmployeeDemo (main class) that creates some Employee objects and calls Employee method to display no. of employees and total of their salaries.
+ans:
+
+	import java.util.Scanner;
+
+	class Employee
+	{
+		static int empno=0;
+		static float salary=0;
+		
+		Employee(int salary)
+		{
+			empno++;
+			this.salary+=salary;
+		}
+		
+		void display()
+		{
+			System.out.println("Total employees: "+empno);
+			System.out.println("Total salary: "+salary);
+		}
+	}
+
+	class EmployeeDemo
+	{
+		public static void main(String[] args)
+		{
+			Employee e1=new Employee(15000);
+			Employee e2=new Employee(10000);
+			Employee e3=new Employee(8000);
+			Employee e4=new Employee(2000);
+			e1.display();
+		}
+	}
+		
+output:
+		Total employees: 4
+		Total salary: 35000.0
+		
+		
+		
+		
+
+39.	Create class Product with three data members (pid, price, quantity) and parameterized constructor that takes values for all three data members.  
+	Create a main method in different class (say ProductDemo) and perform following task:
+	a. Accept information for five Product objects from user and store objects in an array
+	b. Find pid of product with highest price. 
+	c. Create a static method (with array of product’s object as argument) in Product class to calculate and return total amount spent on all products. ( amount spent on single product = price of product * quantity of product )
+ans:
+
+	import java.util.Scanner;
+
+	class Product
+	{
+		int pid,quantity;
+		float price;
+		
+		Product(int pid,int quantity,float price)
+		{
+			this.pid=pid;
+			this.quantity=quantity;
+			this.price=price;
+		}
+		
+		
+
+		}
+	}
+
+	class ProductDemo
+	{
+		public static void main(String[] args)
+		{	
+			Product p1=new Product(1,2,200);
+			Product p2=new Product(2,3,100);
+			Product p3=new Product(3,2,400);
+			Product p4=new Product(4,2,100);
+
+
+			Product p5=new Product(5,3,300);
+			Product p[]=new Product[]{p1,p2,p3,p4,p5};
+			Product test;
+			float price[]=new float[p.length];
+			
+			
+			for(int i=0; i<p.length; i++)
+			{
+				test=p[i];
+				price[i]=test.price;
+			}
+			
+			float max=0;
+			for(int i=0; i<price.length; i++)
+			{
+				if(max<price[i])
+				{
+					max=max+price[i];
+					price[i]=max-price[i];
+					max=max-price[i];
+				}
+			}
+			System.out.println("highest price: "+max);
+
+			for(int i=0; i<p.length; i++)
+			{
+				test=p[i];
+				if(max==test.price)
+				{
+					System.out.println("pid of product with highest price: "+test.pid);
+				}
+			}
+			
+			float T=Product.total(p);
+			System.out.println("Total amount spent on the product: "+T);
+			
+		}
+	}		
+		
+output:
+		highest price: 400.0
+		pid of product with highest price: 3
+		Total amount spent on the product: 2600.0
+		
+		
+	
+
+
+
+
+40.	Create a class Student having data members name, roll no., age and score. 
+	Write a program to accept 10 records of student and store them in an array. And then arrange the student records based on the score group [0-50], [50-65], [65-80], [80-100].
+ans:
+
+	import java.util.Scanner;
+
+	class Student
+	{
+		int roll,age;
+		float score;
+		String name;
+		
+		Student(int roll,String name,int age,float score)
+		{
+			this.roll=roll;
+			this.name=name;
+			this.age=age;
+			this.score=score;
+		}
+		
+		
+	}
+
+	class StudentDemo1
+	{
+		public static void main(String[] args)
+		{	
+			int roll,age;
+			float score;
+			String name;
+			Scanner scan=new Scanner(System.in);
+			Student s[]=new Student[10];
+			Student test;
+			
+			for(int i=0; i<4; i++)
+			{
+				System.out.println("Enter roll, name, age and score:");
+				roll=scan.nextInt();
+				name=scan.next();
+				age=scan.nextInt();
+				score=scan.nextFloat();
+				
+				Student s1=new Student(roll,name,age,score);
+				s[i]=s1;
+				
+			}
+			
+			System.out.println("Students who scored between [80-100]: ");
+			for(int i=0; i<4; i++)
+			{
+				if(s[i].score>=80 && s[i].score<=100)
+				{
+					System.out.println("Roll: "+s[i].roll+"    Name: "+s[i].name+"    Age: "+s[i].age+"    Score: "+s[i].score+"%");
+				}
+			}
+			
+			System.out.println("Students who scored between [65-80]: ");
+			for(int i=0; i<4; i++)
+			{
+				if(s[i].score>=65 && s[i].score<80)
+				{
+					System.out.println("Roll: "+s[i].roll+"    Name: "+s[i].name+"    Age: "+s[i].age+"    Score: "+s[i].score+"%");
+				}
+			}
+			
+			System.out.println("Students who scored between [50-65]: ");
+			for(int i=0; i<4; i++)
+			{
+				if(s[i].score>=50 && s[i].score<65)
+				{
+					System.out.println("Roll: "+s[i].roll+"    Name: "+s[i].name+"    Age: "+s[i].age+"    Score: "+s[i].score+"%");
+				}
+			}
+			
+			System.out.println("Students who scored between [45-50]: ");
+			for(int i=0; i<4; i++)
+			{
+				if(s[i].score>=45 && s[i].score<50)
+				{
+					System.out.println("Roll: "+s[i].roll+"    Name: "+s[i].name+"    Age: "+s[i].age+"    Score: "+s[i].score+"%");
+				}
+			}
+		}
+	}	
+		
+output:		
+		Enter roll, name, age and score:
+		1
+		jayant
+		10
+		46
+		
+		Enter roll, name, age and score:
+		2
+		rahul
+		20
+		55
+		
+		Enter roll, name, age and score:
+		3
+		pratik
+		30
+		84
+		
+		Enter roll, name, age and score:
+		4
+		shubham
+		40
+		99
+		
+		Students who scored between [80-100]:
+		Roll: 3    Name: pratik    Age: 30    Score: 84.0%
+		Roll: 4    Name: shubham    Age: 40    Score: 99.0%
+		
+		Students who scored between [65-80]:
+		
+		Students who scored between [50-65]:
+		Roll: 2    Name: rahul    Age: 20    Score: 55.0%
+		
+		Students who scored between [45-50]:
+		Roll: 1    Name: jayant    Age: 10    Score: 46.0%
+		
+		
+		
+		
+		
+		
+//41.	Write a program to demonstrate this() construct functionality.
+ans:
+
+	import java.util.Scanner;
+	class ThisConstruct
+	{
+		int roll;
+		String name;
+		
+		ThisConstruct(int roll,String name)
+		{
+			System.out.println("IN 2-PARAMERIZED CONSTRUCTOR");
+			this.roll=roll;
+			this.name=name;
+			
+		}
+		
+		ThisConstruct(int roll, String name, String gender)
+		{
+			
+			this(roll,name);
+			System.out.println("IN 3-PARAMERIZED CONSTRUCTOR");
+			System.out.println("Name: "+this.name);
+			System.out.println("Roll no: "+this.roll);	
+			System.out.println(gender);
+			
+		}
+	}
+
+	class ThisConstructDemo
+	{
+		int roll;
+		String name;
+		
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter Roll no: ");
+			int roll=scan.nextInt();
+			System.out.print("Enter Name: ");
+			String name=scan.next();
+			System.out.print("Gender: ");
+			String gender=scan.next();
+			
+			ThisConstruct s1=new ThisConstruct(roll,name,gender);
+		}
+	}
+				
+				
+output:
+		Enter Roll no: 1234
+		Enter Name: shubham
+		Gender: male
+		
+		IN 2-PARAMERIZED CONSTRUCTOR
+		IN 3-PARAMERIZED CONSTRUCTOR
+		Name: shubham
+		Roll no: 1234
+		male
+		
+		
+		
+		
+		
+		
+		
+
+42.	Create a class Tile to store the edge length of a square tile, and create another class Floor to store length and width of a rectangular floor. 
+	Add method totalTiles(Tile t) in Floor class with Tile as argument to calculate the whole number of tiles needed to cover the floor completely.
+ans:
+
+	import java.util.Scanner;
+
+	class Tile
+	{
+		int tlength,twidth;
+		
+		Tile(int tlength,int twidth)
+		{
+			this.tlength=tlength;
+			this.twidth=twidth;
+		}
+		
+		int ttiles(int flength,int fwidth)
+		{
+			int tarea=tlength*twidth;
+			int farea=flength*fwidth;
+			int ttiles=(farea/tarea);
+			return ttiles;
+		}
+	}
+
+	class Floor
+	{
+		int length,width,total;
+		public static void main(String[] args)
+		{	
+			Scanner scan=new Scanner(System.in);
+			Floor f=new Floor();
+			
+			System.out.println("Enter length of the tile: ");
+			f.length=scan.nextInt();
+			System.out.println("Enter width of the tile: ");
+			f.width=scan.nextInt();
+			Tile t=new Tile(f.length,f.width);
+			
+			
+			System.out.println("\n Enter length of the floor: ");
+			f.length=scan.nextInt();
+			System.out.println("Enter width of the floor: ");
+			f.width=scan.nextInt();
+			
+			f.total=t.ttiles(f.length,f.width);
+			System.out.println("\n Total tiles needed: "+f.total);
+			
+		}
+	}
+	
+output:
+		Enter length of the tile:
+		1
+		Enter width of the tile:
+		1
+
+		Enter length of the floor:
+		10
+		Enter width of the floor:
+		10
+
+		 Total tiles needed: 100
+		
+		
+		
+		

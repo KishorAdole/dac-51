@@ -1,0 +1,483 @@
+
+			ASSIGNMENT - 2
+			(Core JAVA)
+			
+			
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+16.	Write a program to print table of any entered number using loop
+ans:
+
+	import java.util.Scanner;
+	class Table
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter a number: ");
+			int n=scan.nextInt();
+			int i=1;
+			do
+			{
+				System.out.println(n*i);
+				i++;
+			}while(i<=10);
+		}
+	}
+	
+output:
+		Enter a number: 10
+		10
+		20
+		30
+		40
+		50
+		60
+		70
+		80
+		90
+		100
+		
+		
+		
+		
+17.	Write a program to reverse a given number.
+ans:
+
+	import java.util.Scanner;
+	class ReverseNum
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter a number: ");
+			int num=scan.nextInt();
+			int rev=0;
+			while(num!=0)
+			{
+				rev=rev*10+num%10;
+				num=num/10;
+			}
+			System.out.println("Reverse: "+rev);
+		}
+	}
+	
+output:
+		Enter a number: 12345
+		Reverse: 54321
+		
+		
+		
+18.	Program to check whether number is prime or not.
+ans:
+
+	import java.util.Scanner;
+	class Prime
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter a number: ");
+			int num=scan.nextInt();
+			int x=num/2;
+			boolean flag=true;
+			if(num==0||num==1)
+			{
+				System.out.println("Not a prime number.");
+			}
+			else
+			{
+				for(int i=2; i<=x; i++)
+				{
+					if(num%i==0)
+					{
+						flag=false;
+					}
+				}
+				if(flag==true)
+				{
+					System.out.print("Prime number");
+				}
+				else
+				{
+					System.out.println("Not a Prime number.");
+				}
+			}
+		}
+	}
+	
+output:
+		Enter a number: 173
+		Prime number
+		
+		Enter a number: 236
+		Not a Prime number.
+		
+		
+		
+19.	Calculate  series : 12+22+32+42+.........+n2
+ans:
+
+	import java.util.Scanner;
+	class Series
+	{
+		public static void main(String[] args)
+		{
+			int a=12,sum=0;
+		
+			for(int i=1; i<10; i++)
+			{
+				sum=a+sum;
+				a=a+10;
+			}
+			System.out.println("Sum: "+sum);
+		}
+	}
+	
+output:
+		Sum: 468
+		
+		
+		
+		
+20.	Print all prime numbers between two given numbers. [ break continue ]
+ans:
+
+	import java.util.Scanner;
+	class PrimeInRange
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.print("Enter lower range: ");
+			int lower=scan.nextInt();
+			System.out.print("Enter upper range: ");
+			int upper=scan.nextInt();
+
+			for(int i=lower; i<=upper; i++)
+			{
+				int x=i/2;
+				if(i==0||i==1)
+				{
+				}
+				else
+				{
+					boolean flag=true;
+					for(int j=2; j<=x; j++)
+					{
+						if(i%j==0)
+						{
+							flag=false;
+						}
+					}
+					if(flag==true)
+					{
+						System.out.println(i);
+					}
+				}
+			}
+		}
+	}
+	
+output:
+		Enter lower range: 2
+		Enter upper range: 20
+		2
+		3
+		5
+		7
+		11
+		13
+		17
+		19
+		
+		
+		
+21.	Program to show sum and average of 10 element array. Accept array elements from user. 
+ans:
+
+	import java.util.Scanner;
+	class ArraySum
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 10 numbers: ");
+			int arr[]=new int[10];
+			int sum=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+			for(int i:arr)
+			{
+				sum=sum+i;
+			}
+			System.out.println("Sum: "+sum);
+			System.out.println("Average: "+(sum/arr.length));
+		}
+	}
+	
+output:
+		Enter 10 numbers:
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		2
+		Sum: 20
+		Average: 2
+		
+		
+		
+		
+22.	Sort a ten element array in descending order.
+ans:
+
+	import java.util.*;
+	class ArraySort
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 10 numbers: ");
+			int arr[]=new int[10];
+			int x=0,max=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+
+			for(int j=0; j<arr.length; j++)
+			{
+				max=arr[j];
+				for(int i=j; i<arr.length; i++)
+				{
+					if (arr[i]>max)
+					{
+						max=arr[i];
+					}
+				}
+				for(int i=j; i<arr.length; i++)
+				{
+					if (arr[i]==max)
+					{
+						arr[i]=arr[j];
+						arr[j]=max;
+					}
+				}
+				
+			}
+				
+			
+			System.out.println("Sorted array in descending order: ");
+			for(int i:arr)
+			{
+				System.out.println(i);
+			}
+			
+		}
+	}
+
+
+output:
+		Enter 10 numbers:
+		23
+		2
+		12
+		14
+		5
+		67
+		89
+		65
+		43
+		21
+		Sorted array in descending order:
+		89
+		67
+		65
+		43
+		23
+		21
+		14
+		12
+		5
+		2
+		
+		
+		
+		
+23.	Write a program to reverse the array elements
+ans:
+
+	import java.util.*;
+	class ArrayReverse
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 7 numbers: ");
+			int arr[]=new int[7];
+			int s=0,e=arr.length-1;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+
+			for(int j=1; j<=arr.length/2; j++)
+			{
+				arr[s]=arr[e]+arr[s];
+				arr[e]=arr[s]-arr[e];
+				arr[s]=arr[s]-arr[e];
+				s+=1;
+				e-=1;
+			}
+				
+			
+			System.out.println("Array in reverse order: ");
+			for(int i:arr)
+			{
+				System.out.println(i);
+			}
+			
+		}
+	}
+	
+output:
+		Enter 7 numbers:
+		11
+		22
+		33
+		4
+		55
+		66
+		77
+		Array in reverse order:
+		77
+		66
+		55
+		4
+		33
+		22
+		11
+		
+		
+		
+		
+24.	Write a program to search an element in the array
+ans:
+
+	import java.util.*;
+	class ArraySearch
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 7 numbers: ");
+			int arr[]=new int[7];
+			int flag=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+			
+			System.out.print("Enter a number to search in the array: ");
+			int num=scan.nextInt();
+			for(int j=0; j<arr.length; j++)
+			{
+				if(arr[j]==num)
+				{
+					System.out.println("Number found at "+j+"th index");
+					flag++;
+				}
+			}
+				
+			if(flag==0)
+			{
+				System.out.println("Enement not found");
+			}
+			
+		}
+	}
+	
+output:
+		Enter 7 numbers:
+		1
+		2
+		3
+		4
+		5
+		6
+		7
+		Enter a number to search in the array: 4
+		Number found at 3th index
+
+		Enter 7 numbers:
+		1
+		2
+		3
+		4
+		5
+		6
+		7
+		Enter a number to search in the array: 9
+		Enement not found
+		
+		
+		
+		
+24.	Write a program to search an element in the array
+ans:
+
+	import java.util.*;
+	class ArrayOddEven
+	{
+		public static void main(String[] args)
+		{
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter 7 numbers: ");
+			int arr[]=new int[7];
+			int oddSum=0;
+			int evenSum=0;
+			
+			for(int i=0; i<arr.length; i++)
+			{
+				arr[i]=scan.nextInt();
+			}
+			
+			for(int j=0; j<arr.length; j++)
+			{
+				if(arr[j]%2==0)
+				{
+					evenSum=evenSum+arr[j];
+				}
+				else
+				{
+					oddSum=oddSum+arr[j];
+				}
+			}
+			
+			System.out.println("Sum of Even numbers: "+evenSum);
+			System.out.println("Sum of Odd numbers: "+oddSum);
+		}
+	}
+	
+output:
+		Enter 7 numbers:
+		2
+		2
+		2
+		3
+		3
+		3
+		3
+		Sum of Even numbers: 6
+		Sum of Odd numbers: 12

@@ -1,0 +1,187 @@
+
+			ASSIGNMENT - 6
+			(Core JAVA)
+			
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+48.	Create an Abstract class Processor with int member variable data  and method showData to display data value.
+	Create abstract method process() to define processing of member data. 
+	a. Create a class  Factorial using abstract class Processor  to calculate and print factorial of a number by overriding the process method. 
+	b. Create a class Circle using abstract class Processor to calculate and print area of a circle by overriding the process method.
+	Ask user to enter choice (factorial or circle area).  
+	Also ask data to work upon. Use Processor class reference to achieve this mechanism.
+ans:
+
+	import java.util.Scanner;
+	abstract class Processor
+	{
+		float data=1;
+		void showData()
+		{
+			System.out.println(data);
+		}
+		abstract void process(float num);
+	}
+
+	class Factorial extends Processor
+	{
+		void process(float num) 
+		{
+			for(float i=num; i>=1; i--)
+			{
+				data*=i;
+			}
+		}
+	}
+
+	class Circle extends Processor
+	{
+		void process(float num) 
+		{
+			float area=3.14f*num*num;
+			data=area;
+		}
+	}
+
+	class Q48_Demo
+	{
+		public static void main(String[] args)
+		{
+			System.out.println("Select number of choice: 1) Factorial 2) Area of circle");
+			Scanner sc=new Scanner(System.in);
+			int c=sc.nextInt();
+			Processor f1=new Factorial();
+			Processor f2=new Circle();
+			
+			switch(c)
+			{
+				case 1:
+				{
+					float num;
+					System.out.print("Enter a number: ");
+					num=sc.nextInt();
+					f1.process(num);
+					f1.showData();
+					break;				
+				}
+				case 2:
+				{
+					float num;
+					System.out.print("Enter a number: ");
+					num=sc.nextInt();
+					f2.process(num);
+					f2.showData();
+					break;
+				}
+				default:
+				{
+					System.out.print("Inavlid Choice!!");
+				}
+			}
+		}
+	}
+	
+output:
+		Select number of choice: 1) Factorial 2) Area of circle
+		1
+		Enter a number: 5
+		120.0
+		
+		Select number of choice: 1) Factorial 2) Area of circle
+		2
+		Enter a number: 2
+		12.56
+
+
+
+
+
+49.	Create Interface Taxable with members salesTax=7% and incomeTax=10.5%. 
+	create abstract method calcTax().
+	a. Create class Employee(empId,name,salary) and implement Taxable to calculate incomeTax on yearly salary. 
+	b. Create class Product(pid,price,quantity) and implement Taxable to calculate salesTax on unit price of product. 
+	c. Create class for main method(Say XYZ), accept employee information and a product information from user and print income tax and sales tax 	respectively.
+ans:
+
+	import java.util.Scanner;
+	interface Taxable
+	{
+		float salesTax=7;
+		float incomeTax=10.5f;
+		void calcTax();
+	}
+
+	class Employee implements Taxable
+	{
+		int empId;
+		String name;
+		float salary;
+		Employee(int empId,String name,float salary)
+		{
+			this.empId=empId;
+			this.name=name;
+			this.salary=salary;
+		}
+		public void calcTax()   // making public is must as interface methods are by default public, so we cant narrow the access!!!
+		{
+			float tax=salary*incomeTax*12/100;
+			System.out.println("Income tax on yearly salary: "+tax);
+		}
+	}
+
+	class Product implements Taxable
+	{
+		int pid;
+		int quantity;
+		float price;
+		Product(int pid,int quantity,float price)
+		{
+			this.pid=pid;
+			this.quantity=quantity;
+			this.price=price;
+		}
+		public void calcTax()
+		{
+			float tax=price*quantity*salesTax/100;
+			System.out.println("Sales tax on unit product: "+tax);
+		}
+	}
+
+	class Q49_Demo
+	{
+		public static void main(String[] args)
+		{
+			Scanner sc=new Scanner(System.in);
+			System.out.println("Enter Empoyee ID, Name and Salary:");
+			int empId=sc.nextInt();
+			String name=sc.next();
+			float salary=sc.nextFloat();
+			
+			Taxable T1=new Employee(empId,name,salary);
+			T1.calcTax();
+			
+			System.out.println("\n Enter Product ID, Quantity and price:");
+			int pid=sc.nextInt();
+			int quantity=sc.nextInt();
+			float price=sc.nextFloat();
+			
+			Taxable T2=new Product(pid,quantity,price);
+			T2.calcTax();
+		}
+	}
+
+output:
+		Enter Empoyee ID, Name and Salary:
+		12
+		rahul
+		1000
+		Income tax on yearly salary: 1260.0
+
+		 Enter Product ID, Quantity and price:
+		345
+		4
+		100
+		Sales tax on unit product: 28.0
+		
